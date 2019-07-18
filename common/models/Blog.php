@@ -47,7 +47,7 @@ class Blog extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
-            'text' => 'Текст',
+            'text' => 'Те кст',
             'url' => 'ЧПУ',
             'status_id' => 'Статус',
             'sort' => 'Сортировка',
@@ -63,5 +63,15 @@ class Blog extends \yii\db\ActiveRecord
     {
         $list = self::getStatusList();
         return $list[$this->status_id];
+    }
+
+    public function getAuthor()
+    {
+      return $this->hasOne(User::className(),['id' => 'user_id']);
+    }
+
+    public function getBlogTag()
+    {
+        return $this->hasMany(BlogTag::className(),['blog_id' => 'id']);
     }
 }

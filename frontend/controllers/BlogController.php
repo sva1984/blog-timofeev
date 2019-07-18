@@ -22,14 +22,18 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $blogs = Blog::find()->andWhere(['status_id'=>1])->orderBy('sort')->all();
-        $dataProvider = new ActiveDataProvider([
-            'query' => $blogs,
-            'pagination' => [
-                'pageSize' => 10,],
-        ]);
+        $model = new Blog();
+        $blogs = Blog::find()->with('author')->andWhere(['status_id'=>1])->orderBy('sort')->all();
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => $blogs,
+//            'pagination' => [
+//                'pageSize' => 10,],
+//        ]);
 
-        return $this->render('all', ['dataProvider' => $dataProvider]);
+        return $this->render('all', [
+            'blogs' => $blogs,
+            'model' => $model,
+            ]);
     }
 
     public function actionOne($url)
