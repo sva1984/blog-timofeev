@@ -19,8 +19,12 @@ $this->params['breadcrumbs'][] = 'Update';
     ]) ?>
 
     <div class="well">
-        <?php foreach ($model->blogTag as $one):?>
-        <?= $one->tag->name?> <br>
+        <?php
+        /**
+         *
+         */
+        foreach ($model->tags as $one):?>
+        <?= $one->name?> <br>
         <?php endforeach?>
 
     </div>

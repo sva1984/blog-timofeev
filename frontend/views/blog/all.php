@@ -16,7 +16,7 @@ use \yii\widgets\ListView;
             <div class="col-lg-12">
                 <h2><?= $one->title ?><span class="badge"><?= $mod->author->username?></span></h2>
                 <?= $one->text ?>
-                <?= \yii\bootstrap\Html::a('подробнее',['blog/one','url'=>$one->url],['class'=>'btn btn-warning'])?>
+                <?= \yii\bootstrap\Html::a('Быстрее подробнее',['blog/one','url'=>$one->url],['class'=>'btn btn-warning'])?>
 
             </div>
         <?php endforeach; ?>
