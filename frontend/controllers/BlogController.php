@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Blog;
+use frontend\models\Post;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -17,30 +18,19 @@ class BlogController extends Controller
 
     /**
      * Displays homepage.
-     *
+     * Post $post
      * @return mixed
      */
     public function actionIndex()
     {
-        $model = new Blog();
-        $blogs = Blog::find()->with('author')->andWhere(['status_id'=>1])->orderBy('sort')->all();
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => $blogs,
-//            'pagination' => [
-//                'pageSize' => 10,],
-//        ]);
+        $post = new Post();
+        echo $post->property1;
+        echo $post->property2;
 
-        return $this->render('all', [
-            'blogs' => $blogs,
-            'model' => $model,
-            ]);
+        echo "<pre>";
+        $post->test();
+        echo "<pre>";
     }
 
-    public function actionOne($url)
-    {
-       if( $blog = Blog::find()->andWhere(['url'=>$url])->one()){
-        return $this->render('one', ['blog' => $blog]);
-    }
-    throw new NotFoundHttpException('ой нет такого блога');
-    }
+
 }
